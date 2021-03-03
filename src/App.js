@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import { Component } from 'react';
+import CardList from './components/CardList';
+import SearchBox from './components/SearchBox';
+import Scroll from './components/Scroll';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      robots: [],
+      seachField: ''
+    }
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users => this.setState({robots: users}));
+  }
+
+  onSearchChange = (event) => {
+    this.setState({seachField: event.target.value.toLowerCase()});
+    }
+
+  render() {
+    const newRobots = this.state.robots.filter(robot => {
+      return robot.name.toLowerCase().includes(this.state.seachField);
+    })
+    return (
+      <div className="tc">
+        <img className='mv4'
+          alt='robofriends' src={`https://see.fontimg.com/api/renderfont4/ALExA/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/Um9ib0ZyaWVuZHM/aeroblade-demo.png`}/>
+        <SearchBox onSearchChange={this.onSearchChange}/>
+        <Scroll>
+          <CardList robots={newRobots}/>
+        </Scroll>
+      </div>
+    )
+  }
 }
 
 export default App;
