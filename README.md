@@ -1,4 +1,4 @@
-# RoboFriends - [Live](https://zhantoroev.github.io/RoboFriends/)
+# RoboFriends - [Live](https://zhantoroev.github.io/robofriends/)
 
 <h4>Interactive react app<h4>
 

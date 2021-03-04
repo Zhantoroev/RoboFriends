@@ -2,6 +2,7 @@ import { Component } from 'react';
 import CardList from './components/CardList';
 import SearchBox from './components/SearchBox';
 import Scroll from './components/Scroll';
+import ErrorBoundry from './components/ErrorBoundry';
 import './App.css';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => this.setState({robots: users}));
+    console.log(this.state.robots)
   }
 
   onSearchChange = (event) => {
@@ -33,7 +35,9 @@ class App extends Component {
           alt='robofriends' src={`https://see.fontimg.com/api/renderfont4/ALExA/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/Um9ib0ZyaWVuZHM/aeroblade-demo.png`}/>
         <SearchBox onSearchChange={this.onSearchChange}/>
         <Scroll>
-          <CardList robots={newRobots}/>
+          <ErrorBoundry>
+            <CardList robots={newRobots}/>
+          </ErrorBoundry>
         </Scroll>
       </div>
     )
