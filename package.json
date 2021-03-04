@@ -1,6 +1,6 @@
 {
-  "homepage": "http://Zhantoroev.github.io/RoboFriends",
-  "name": "first",
+  "homepage": "https://zhantoroev.github.io/robofriends",
+  "name": "robofriends",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
