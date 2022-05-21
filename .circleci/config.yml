@@ -13,7 +13,7 @@ jobs:
           command: docker build -t $IMAGE_NAME:latest .
   publish-latest:
     environment:
-      IMAGE_NAME: robofriends
+      IMAGE_NAME: smz001/robofriends
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
