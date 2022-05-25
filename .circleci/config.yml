@@ -22,8 +22,8 @@ jobs:
           root: .
           paths:
             - ./image.tar
-  publish-latest:
-    executor: docker-publisher
+  docker:
+    executor: docker
     steps:
       - attach_workspace:
           at: /tmp/workspace
@@ -44,7 +44,7 @@ workflows:
           filters:
             branches:
               only: master
-      - publish-latest:
+      - docker:
           requires:
             - build
           filters:
