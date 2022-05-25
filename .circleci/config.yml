@@ -1,13 +1,13 @@
 on: 2.1
 executors:
-  docker-publisher:
+  docker:
     environment:
       IMAGE_NAME: smz001/robofriends
     docker:
       - image: circleci/buildpack-deps:stretch
 jobs:
   build:
-    executor: docker-publisher
+    executor: docker
     steps:
       - checkout
       - setup_remote_docker
