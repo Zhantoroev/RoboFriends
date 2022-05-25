@@ -4,7 +4,7 @@ executors:
     environment:
       IMAGE_NAME: smz001/robofriends
     docker:
-      - image: smz001/robofriends:stretch
+      - image: smz001/robofriends
 jobs:
   build:
     executor: docker-publisher
